@@ -20,15 +20,13 @@ execute:
 
 $$ $$
 
-### Structural Vector Autoregressions {style="color:#1A003F;"}
+### modelling and forecasting framework {style="color:#1A003F;"}
 
-### Identification of Structural VARs {style="color:#1A003F;"}
+### the model {style="color:#1A003F;"}
 
-### Dynamic Causal Effects {style="color:#1A003F;"}
+### the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) {style="color:#1A003F;"}
 
-### Bayesian Estimation {style="color:#1A003F;"}
-
-### Monetary Policy Analysis Using the  [bsvars](https://cran.r-project.org/package=bsvars) Package {style="color:#1A003F;"}
+### roadmap {style="color:#1A003F;"}
 
 
 
@@ -44,11 +42,11 @@ $$ $$
 
 $$ $$
 
-### Lecture Slides [as a Website](https://bsvars.github.io/2024-10-be24-bsvars) {style="color:#1A003F;"}
+### Lecture Slides [as a Website](https://bsvars.org/2025-03-bvarPANELs-ilo/) {style="color:#1A003F;"}
 
 ### [R script](https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R) for your own Australian monetary policy analysis{style="color:#1A003F;"}
 
-### GitHub [repo](https://github.com/bsvars/2024-10-be24-bsvars) to reproduce the slides and results{style="color:#1A003F;"}
+### GitHub [repo](https://github.com/bsvars/2025-03-bvarPANELs-ilo) to reproduce the slides and results{style="color:#1A003F;"}
 
 ### Tasks{style="color:#1A003F;"}
 
