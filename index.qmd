@@ -132,7 +132,7 @@ capacity to extract signal from data
 \begin{align}
 &\\
 		\mathbf{y}_{c.t} &= \begin{bmatrix} gdp_{c.t} & UR_{c.t} & EPR_{c.t} & LFPR_{c.t} \end{bmatrix}'\\[1ex]
-		\mathbf{y}_{c.t} &= \mathbf{A}_{c.1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.c.t}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
+		\mathbf{y}_{c.t} &= \mathbf{A}_{c.1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.c}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
 		\boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} & \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma_c\right)
 \end{align}		
 		
@@ -150,9 +150,9 @@ capacity to extract signal from data
 
 \begin{align}
 &\\
-		E_\pi\left[\mathbf{A}_{c}\right] &= \mathbf{A}, \qquad \mathbf{A}_{c} = \begin{bmatrix} \mathbf{A}_{c.1} & \mathbf{A}_{d.c.t} \end{bmatrix}'\\[1ex]
+		E_\pi\left[\mathbf{A}_{c}\right] &= \mathbf{A}, \qquad \mathbf{A}_{c} = \begin{bmatrix} \mathbf{A}_{c.1} & \mathbf{A}_{d.c} \end{bmatrix}'\\[1ex]
 		E_\pi\left[\boldsymbol\Sigma_c\right] &= \boldsymbol\Sigma\\[3ex]
-		\mathbf{y}_{c.t} &= \mathbf{A}_{1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.t}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
+		\mathbf{y}_{c.t} &= \mathbf{A}_{1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
 		\boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} & \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma\right)
 \end{align}
 		
@@ -214,7 +214,7 @@ capacity to extract signal from data
 
 \begin{align}
 &\\
-		{\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} & = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c.t}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)
+		{\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} & = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)
 \end{align}
 		
 ::: footer
