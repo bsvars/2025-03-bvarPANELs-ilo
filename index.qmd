@@ -44,70 +44,226 @@ $$ $$
 
 ### Lecture Slides [as a Website](https://bsvars.org/2025-03-bvarPANELs-ilo/) {style="color:#1A003F;"}
 
-### [R script](https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R) for your own Australian monetary policy analysis{style="color:#1A003F;"}
+### [R script](https://github.com/bsvars/2025-03-bvarPANELs-ilo/blob/master/bvarPANELs-ilo.R) for the easy results reproduction {style="color:#1A003F;"}
 
 ### GitHub [repo](https://github.com/bsvars/2025-03-bvarPANELs-ilo) to reproduce the slides and results{style="color:#1A003F;"}
 
 ### Tasks{style="color:#1A003F;"}
 
 
-## <span style="color: #1A003F;">Structural Vector Autoregressions</span> {background-color="#1614B1"}
+## <span style="color: #1A003F;">modelling and forecasting framework</span> {background-color="#1614B1"}
 
-## Structural Vector Autoregressions
+
+## modelling and forecasting framework
 
 - go-to models for the analysis of policy effects
 
-::: incremental
-- facilitate the analysis of **dynamic causal effects** of a well-isolated cause
-- extensively used for: *monetary* and *fiscal* policy, *financial* markets, ...
-- relatively simple to work with data and provide *empirical evidence on the propagation of shocks* through economies and markets
-- provide data-driven stylised facts to be incorporated in theoretical model
-- require identification of the cause of the dynamic effects
-- extendible: *featuring many variations in specification*
-    -   non-normality
-    -   heteroskedasticity
-    -   time-varying parameters
-    -   Bayesian
--   Proposed by [Sims (1980)](https://doi.org/10.2307/1912017)
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
+
+
+
+
+
+
+## <span style="color: #1A003F;">the model</span> {background-color="#1614B1"}
+
+
+## the model
+
+- go-to models for the analysis of policy effects
 
 ::: footer
-[Bayesian Structural VARs](https://bsvars.github.io/2024-10-be24-bsvars)
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
 
 
 
-## Structural Vector Autoregressions
+
+
+
+
+
+## <span style="color: #1A003F;">the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)</span> {background-color="#1614B1"}
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
+
+### [bvarPANELs](https://github.com/bsvars/bvarPANELs) features
+
+- precise estimation and forecasting
+- simple workflows in **R**
+- excellent computational speed
+  - frontier econometric and numerical techniques
+  - algorithms written in **C++**
+- extensive documentation
+- up-to standards: ready for publication
+- install the package from the [GitHub repo](https://github.com/bsvars/bvarPANELs)
+```
+devtools::install_github("bsvars/bvarPANELs")
+```
+
 
 ::: footer
-[Bayesian Structural VARs](https://bsvars.github.io/2024-10-be24-bsvars)
-:::
-
-### The model.
-\begin{align}
-\text{VAR equation: }&& y_t &= \mathbf{A}_1 y_{t-1} + \dots + \mathbf{A}_p y_{t-p} + \boldsymbol\mu_0 + \epsilon_t\\[1ex]
-\text{structural equation: }&& \mathbf{B}\epsilon_t &= u_t\\[1ex]
-\text{structural shocks: }&& u_t |Y_{t-1} &\sim N_N\left(\mathbf{0}_N,\mathbf{I}_N\right)
-\end{align}
-
-::: {.fragment}
-### Notation.
-- $\mathbf{B}$ - $N\times N$ structural matrix of contemporaneous relationships
-- $u_t$ - $N$-vector of structural shocks at time $t$
-  
-  Isolating these shocks allows us to *identify dynamic effects of
-uncorrelated shocks* on variables $y_t$
-
-- $\epsilon_t$ - $N$-vector with error terms at time $t$
-- the rest as in the lecture on [Bayesian VARs](https://bsvars.github.io/2024-10-be24-bsvarSIGNs/#/varp-model)
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
 
 
 
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
+
+![](grph_package.png){.absolute top=100 right=250 width="600"}
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
 
 
 
-<!-- ##  {background-color="#1614B1"} -->
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
 
-<!-- ![](social.png){.absolute top=30 right=200 width="800"} -->
+![](grph_paper.png){.absolute top=100 right=250 width="600"}
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) 
+
+### specify and estimate the model
+
+```{r}
+#| label: spec
+#| cache: true
+#| warning: false
+
+library(bvarPANELs) # load the package
+
+spec = specify_bvarPANEL$new( # specify the model
+  ilo_dynamic_panel,
+  exogenous = ilo_exogenous_variables,
+  stationary = c(FALSE, FALSE, FALSE, TRUE),
+  type = c("real", "rate", "rate", "rate")
+)
+
+burn = estimate(spec, S = 10000, show_progress = FALSE) # estimate the model
+post = estimate(burn, S = 10000)                        # estimate the model
+
+```
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
+
+### forecast labour market outcomes
+
+```{r}
+#| label: for
+#| cache: true
+#| warning: false
+
+fore = forecast(
+  post,
+  horizon = 6,
+  exogenous_forecast = ilo_exogenous_forecasts,
+  conditional_forecast = ilo_conditional_forecasts
+)
+```
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
+
+### forecast labour market outcomes
+
+```{r}
+#| label: fore_plot
+#| cache: true
+#| warning: false
+
+plot(fore, "COL", main = "Forecasts for Colombia")
+```
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
+
+### forecast labour market outcomes
+
+```{r}
+#| label: fore_summary
+#| cache: true
+#| warning: false
+
+summary(fore, "COL")$variable2
+```
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
+
+### forecast error variance decomposition
+
+```{r}
+#| label: fevd
+#| cache: true
+#| warning: false
+
+post |>
+  compute_variance_decompositions(horizon = 6) |>
+  plot(which_c = "COL")
+```
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+## <span style="color: #1A003F;">roadmap</span> {background-color="#1614B1"}
+
+
+## roadmap
+
+- go-to models for the analysis of policy effects
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+
+##  {background-color="#1614B1"}
+
+![](social_ilo.png){.absolute top=80 right=100 width="800"}
 
