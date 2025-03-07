@@ -1,5 +1,5 @@
 ---
-title: "<span style='color: #1A003F;'>Bayesian Forecasting of Labour Market Indicators</span>" 
+title: "<span style='color: #1A003F;'>Bayesian Forecasting of Labour Market Indicators using the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)</span>" 
 author: "<span style='color: #1A003F;'>by Tomasz Woźniak</span>"
 email: "tomasz.wozniak@unimelb.edu.au"
 title-slide-attributes:
@@ -26,7 +26,7 @@ $$ $$
 
 ### the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) {style="color:#1A003F;"}
 
-### roadmap {style="color:#1A003F;"}
+<!-- ### roadmap {style="color:#1A003F;"} -->
 
 
 
@@ -34,7 +34,7 @@ $$ $$
 
 ##  {background-color="#1614B1"}
 
-![](bsvars.org.png){.absolute top=30 right=275 width="500"}
+[![](bsvars.org.png)](https://bsvars.org/){.absolute top=30 right=275 width="500"}
 
 
 
@@ -48,7 +48,7 @@ $$ $$
 
 ### GitHub [repo](https://github.com/bsvars/2025-03-bvarPANELs-ilo) to reproduce the slides and results{style="color:#1A003F;"}
 
-### Tasks{style="color:#1A003F;"}
+### [bvarPANELs package repo](https://github.com/bsvars/bvarPANELs)
 
 
 ## <span style="color: #1A003F;">modelling and forecasting framework</span> {background-color="#1614B1"}
@@ -56,7 +56,15 @@ $$ $$
 
 ## modelling and forecasting framework
 
-- go-to models for the analysis of policy effects
+### characterisation {style="color:#1A003F;"}
+
+- contemporary Bayesian modelling and institutional
+setup
+- incorporates best knowledge and practices
+- a ballance between model size, flexibility, and its
+capacity to extract signal from data
+- highly computational, application-specific modelling
+- inspirations: UN, IPCC, ECB, FED, Christopher Sims
 
 ::: footer
 [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
@@ -66,17 +74,182 @@ $$ $$
 
 
 
+## modelling and forecasting framework
 
-## <span style="color: #1A003F;">the model</span> {background-color="#1614B1"}
+### modelling features {style="color:#1A003F;"}
+
+- Bayesian nonstationary variables handling
+- system modelling
+- dynamic approach
+- global–to–local formulation
+- embedded flexibility
+- parameter estimation risk accountability
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+## modelling and forecasting framework
+
+### forecasting features {style="color:#1A003F;"}
+
+- original non-stationary variables
+- density forecasting
+- conditional forecasting given gdp projections
+- forecasting for models with exogenous variables
+- restricted forecasting of rates
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
 
 
 ## the model
 
-- go-to models for the analysis of policy effects
+### Bayesian hierarchical panel VAR {style="color:#1A003F;"}
+
+- country-specific vector autoregression
+- panel modelling: global model for prior mean
+- flexible 3-level hierarchical prior structure
+- density forecasting
 
 ::: footer
 [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
+
+
+
+
+## the model
+
+### country-specific vector autoregression {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+		\mathbf{y}_{c.t} &= \begin{bmatrix} gdp_{c.t} & UR_{c.t} & EPR_{c.t} & LFPR_{c.t} \end{bmatrix}'\\[1ex]
+		\mathbf{y}_{c.t} &= \mathbf{A}_{c.1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.c.t}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
+		\boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} & \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma_c\right)
+\end{align}		
+		
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+## the model
+
+### global model for the prior mean {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+		E_\pi\left[\mathbf{A}_{c}\right] &= \mathbf{A}, \qquad \mathbf{A}_{c} = \begin{bmatrix} \mathbf{A}_{c.1} & \mathbf{A}_{d.c.t} \end{bmatrix}'\\[1ex]
+		E_\pi\left[\boldsymbol\Sigma_c\right] &= \boldsymbol\Sigma\\[3ex]
+		\mathbf{y}_{c.t} &= \mathbf{A}_{1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.t}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
+		\boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} & \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma\right)
+\end{align}
+		
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+## the model
+
+### the prior {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+\mathbf{A}_c, \boldsymbol\Sigma_c | \mathbf{A}, \mathbf{V}, \mathbf{\Sigma}, \nu &\sim MNIW_{K\times N}\left(\mathbf{A}, \mathbf{V}, (N - \nu - 1)\mathbf{\Sigma}, \nu\right)\\[2ex]
+\mathbf{A}', \mathbf{V} \mid m, w, s &\sim MNIW_{N\times K}\left(m\underline{\mathbf{M}}', w\underline{\mathbf{W}}, s\underline{\mathbf{S}}, \underline{\eta}\right)\label{eq:pgA}\\[2ex]
+\mathbf{\Sigma}\mid s &\sim W_{N}\left(s\underline{\mathbf{S}}_\Sigma,\underline{\mu}_\Sigma\right)
+\end{align}
+		
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+
+
+## the model
+
+### flexible 3-level hierarchical prior structure {style="color:#1A003F;"}
+
+- estimate country-specific parameters: $\mathbf{A}_c$ and $\mathbf{\Sigma}_c$
+- estimate global parameters: $\mathbf{A}$ and $\mathbf{\Sigma}$
+- estimate other prior means and shrinkage levels
+
+### advantages {style="color:#1A003F;"}
+
+- flexible modelling for various types of data
+- improved forecasting performance
+- robustness to different prior specifications
+		
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+
+## forecasting
+
+### one-period-ahead predictive density {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+		{\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} & = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c.t}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)
+\end{align}
+		
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+
+## forecasting
+
+### predictive density {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+		p\left(\mathbf{y}_{c.t+h},\dots,\mathbf{y}_{c.t+1}\mid \mathbf{Y}_{c.t}\right)
+		&= \int p\left(\mathbf{y}_{c.t+h},\dots,\mathbf{y}_{c.t+1},\mathbf{A}_{c},\boldsymbol\Sigma_c\mid \mathbf{Y}_{c.t}\right)d\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\right)\\[1ex]
+		&= \int{\color{lig} p\left(\mathbf{y}_{c.t+h}\mid \mathbf{y}_{c.t+h-1},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)}\\[1ex]
+		&\qquad\times\dots\\[1ex]
+		&\qquad\times {\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)}\\[1ex]
+		&\qquad\times p\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\mid \mathbf{Y}_{c.t}\right)d\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\right)
+\end{align}
+		
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+
+
 
 
 
@@ -90,7 +263,7 @@ $$ $$
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
 
-### [bvarPANELs](https://github.com/bsvars/bvarPANELs) features
+### features {style="color:#1A003F;"}
 
 - precise estimation and forecasting
 - simple workflows in **R**
@@ -134,7 +307,7 @@ devtools::install_github("bsvars/bvarPANELs")
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) 
 
-### specify and estimate the model
+### specify and estimate the model {style="color:#1A003F;"}
 
 ```{r}
 #| label: spec
@@ -165,7 +338,7 @@ post = estimate(burn, S = 10000)                        # estimate the model
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
 
-### forecast labour market outcomes
+### forecast labour market outcomes {style="color:#1A003F;"}
 
 ```{r}
 #| label: for
@@ -190,7 +363,7 @@ fore = forecast(
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
 
-### forecast labour market outcomes
+### forecast labour market outcomes {style="color:#1A003F;"}
 
 ```{r}
 #| label: fore_plot
@@ -210,7 +383,7 @@ plot(fore, "COL", main = "Forecasts for Colombia")
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
 
-### forecast labour market outcomes
+### forecast labour market outcomes {style="color:#1A003F;"}
 
 ```{r}
 #| label: fore_summary
@@ -229,7 +402,7 @@ summary(fore, "COL")$variable2
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
 
-### forecast error variance decomposition
+### forecast error variance decomposition {style="color:#1A003F;"}
 
 ```{r}
 #| label: fevd
@@ -247,16 +420,16 @@ post |>
 
 
 
-## <span style="color: #1A003F;">roadmap</span> {background-color="#1614B1"}
+<!-- ## <span style="color: #1A003F;">roadmap</span> {background-color="#1614B1"} -->
 
 
-## roadmap
+<!-- ## roadmap -->
 
-- go-to models for the analysis of policy effects
+<!-- - go-to models for the analysis of policy effects -->
 
-::: footer
-[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
-:::
+<!-- ::: footer -->
+<!-- [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/) -->
+<!-- ::: -->
 
 
 
