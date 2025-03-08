@@ -1,6 +1,6 @@
 ---
 title: "<span style='color: #1A003F;'>Bayesian Forecasting of Labour Market Indicators using the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)</span>" 
-author: "<span style='color: #1A003F;'>by Tomasz Woźniak</span>"
+author: "by Tomasz Woźniak"
 email: "tomasz.wozniak@unimelb.edu.au"
 title-slide-attributes:
   data-background-color: "#1614B1"
@@ -16,13 +16,11 @@ execute:
   echo: true
 ---
 
-##  {background-color="#1614B1"}
+## Coming up next  {background-color="#1614B1"}
 
 $$ $$
 
 ### modelling and forecasting framework {style="color:#1A003F;"}
-
-### the model {style="color:#1A003F;"}
 
 ### the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) {style="color:#1A003F;"}
 
@@ -30,15 +28,7 @@ $$ $$
 
 
 
-
-
-##  {background-color="#1614B1"}
-
-[![](bsvars.org.png)](https://bsvars.org/){.absolute top=30 right=275 width="500"}
-
-
-
-## <span style="color: #1A003F;">Materials</span> {background-color="#1614B1"} 
+## Materials {background-color="#1614B1"} 
 
 $$ $$
 
@@ -51,7 +41,19 @@ $$ $$
 ### [bvarPANELs package repo](https://github.com/bsvars/bvarPANELs)
 
 
-## <span style="color: #1A003F;">modelling and forecasting framework</span> {background-color="#1614B1"}
+
+
+
+##  {background-color="#1614B1"}
+
+[![](bsvars.org.png)](https://bsvars.org/){.absolute top=30 right=275 width="500"}
+
+
+
+
+
+
+## modelling and forecasting framework {background-color="#1614B1"}
 
 
 ## modelling and forecasting framework
@@ -61,7 +63,7 @@ $$ $$
 - contemporary Bayesian modelling and institutional
 setup
 - incorporates best knowledge and practices
-- a ballance between model size, flexibility, and its
+- a balance between model size, flexibility, and its
 capacity to extract signal from data
 - highly computational, application-specific modelling
 - inspirations: UN, IPCC, ECB, FED, Christopher Sims
@@ -97,7 +99,7 @@ capacity to extract signal from data
 
 - original non-stationary variables
 - density forecasting
-- conditional forecasting given gdp projections
+- conditional forecasting given $gdp$ projections
 - forecasting for models with exogenous variables
 - restricted forecasting of rates
 
@@ -131,11 +133,13 @@ capacity to extract signal from data
 
 \begin{align}
 &\\
-		\mathbf{y}_{c.t} &= \begin{bmatrix} gdp_{c.t} & UR_{c.t} & EPR_{c.t} & LFPR_{c.t} \end{bmatrix}'\\[1ex]
+		\mathbf{y}_{c.t} &= \begin{bmatrix} gdp_{c.t} & UR_{c.t} & EPR_{c.t} & LFPR_{c.t} \end{bmatrix}'\\[3ex]
 		\mathbf{y}_{c.t} &= \mathbf{A}_{c.1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.c}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
-		\boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} & \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma_c\right)
+		\boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} & \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma_c\right)\\[2ex]
 \end{align}		
 		
+- subscript $c$ is for country, and $t$ is for time
+
 ::: footer
 [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
@@ -163,28 +167,6 @@ capacity to extract signal from data
 
 
 
-
-## the model
-
-### the prior {style="color:#1A003F;"}
-
-\begin{align}
-&\\
-\mathbf{A}_c, \boldsymbol\Sigma_c | \mathbf{A}, \mathbf{V}, \mathbf{\Sigma}, \nu &\sim MNIW_{K\times N}\left(\mathbf{A}, \mathbf{V}, (N - \nu - 1)\mathbf{\Sigma}, \nu\right)\\[2ex]
-\mathbf{A}', \mathbf{V} \mid m, w, s &\sim MNIW_{N\times K}\left(m\underline{\mathbf{M}}', w\underline{\mathbf{W}}, s\underline{\mathbf{S}}, \underline{\eta}\right)\label{eq:pgA}\\[2ex]
-\mathbf{\Sigma}\mid s &\sim W_{N}\left(s\underline{\mathbf{S}}_\Sigma,\underline{\mu}_\Sigma\right)
-\end{align}
-		
-::: footer
-[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
-:::
-
-
-
-
-
-
-
 ## the model
 
 ### flexible 3-level hierarchical prior structure {style="color:#1A003F;"}
@@ -198,10 +180,56 @@ capacity to extract signal from data
 - flexible modelling for various types of data
 - improved forecasting performance
 - robustness to different prior specifications
+- convenient estimation using the Gibbs sampler
 		
 ::: footer
 [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
+
+
+
+
+
+## the model
+
+### the local-global prior {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+\mathbf{A}_c, \boldsymbol\Sigma_c | \mathbf{A}, \mathbf{V}, \mathbf{\Sigma}, \nu &\sim MNIW_{K\times N}\left(\mathbf{A}, \mathbf{V}, (N - \nu - 1)\mathbf{\Sigma}, \nu\right)\\[2ex]
+\mathbf{A}', \mathbf{V} \mid m, w, s &\sim MNIW_{N\times K}\left(m\underline{\mathbf{M}}', w\underline{\mathbf{W}}, s\underline{\mathbf{S}}, \underline{\eta}\right)\label{eq:pgA}\\[2ex]
+\mathbf{\Sigma}\mid s &\sim W_{N}\left(s\underline{\mathbf{S}}_\Sigma,\underline{\mu}_\Sigma\right)\\[3ex]
+\end{align}
+		
+- $MNIW$ is the matrix normal-inverse Wishart distribution (see [Woźniak (2016)](https://doi.org/10.1111/1467-8462.12179))
+- $W$ is the Wishart distribution
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+## the model
+
+### hierarchical prior {style="color:#1A003F;"}
+
+\begin{align}
+&\\
+\nu &\sim\exp\left(\underline\lambda\right)\\[1ex]
+m &\sim N\left(\underline{\mu}_m, \underline{\sigma}_m^2\right)\\[1ex]
+w &\sim G\left(\underline{s}_w, \underline{a}_w\right)\\[1ex]
+s &\sim IG2\left(\underline{s}_s, \underline{\nu}_s\right)\\[3ex]
+\end{align}
+		
+- $IG2$ is the inverted gamma 2 distribution
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
 
 
 
@@ -214,9 +242,12 @@ capacity to extract signal from data
 
 \begin{align}
 &\\
-		{\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} & = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)
+		{\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} & = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)\\[5ex]
 \end{align}
 		
+- is implied by the model
+- is the same as frequentist predictive density
+
 ::: footer
 [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
@@ -231,7 +262,6 @@ capacity to extract signal from data
 ### predictive density {style="color:#1A003F;"}
 
 \begin{align}
-&\\
 		p\left(\mathbf{y}_{c.t+h},\dots,\mathbf{y}_{c.t+1}\mid \mathbf{Y}_{c.t}\right)
 		&= \int p\left(\mathbf{y}_{c.t+h},\dots,\mathbf{y}_{c.t+1},\mathbf{A}_{c},\boldsymbol\Sigma_c\mid \mathbf{Y}_{c.t}\right)d\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\right)\\[1ex]
 		&= \int{\color{lig} p\left(\mathbf{y}_{c.t+h}\mid \mathbf{y}_{c.t+h-1},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)}\\[1ex]
@@ -239,7 +269,9 @@ capacity to extract signal from data
 		&\qquad\times {\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)}\\[1ex]
 		&\qquad\times p\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\mid \mathbf{Y}_{c.t}\right)d\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\right)
 \end{align}
-		
+
+- conditional density structure determines the sampling algorithm
+
 ::: footer
 [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
 :::
@@ -258,7 +290,7 @@ capacity to extract signal from data
 
 
 
-## <span style="color: #1A003F;">the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)</span> {background-color="#1614B1"}
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) {background-color="#1614B1"}
 
 
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs)
@@ -305,6 +337,35 @@ devtools::install_github("bsvars/bvarPANELs")
 
 
 
+
+
+## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) 
+
+### load data {style="color:#1A003F;"}
+
+```{r}
+#| label: data
+#| cache: true
+#| warning: false
+
+library(bvarPANELs)             # load the package
+data(ilo_dynamic_panel)         # load the data
+ilo_dynamic_panel$COL           # show the data for Colombia
+```
+
+::: footer
+[Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/)
+:::
+
+
+
+
+
+
+
+
+
+
 ## the R package [bvarPANELs](https://github.com/bsvars/bvarPANELs) 
 
 ### specify and estimate the model {style="color:#1A003F;"}
@@ -314,16 +375,14 @@ devtools::install_github("bsvars/bvarPANELs")
 #| cache: true
 #| warning: false
 
-library(bvarPANELs) # load the package
-
-spec = specify_bvarPANEL$new( # specify the model
-  ilo_dynamic_panel,
-  exogenous = ilo_exogenous_variables,
-  stationary = c(FALSE, FALSE, FALSE, TRUE),
-  type = c("real", "rate", "rate", "rate")
+spec = specify_bvarPANEL$new(                           # specify the model
+  ilo_dynamic_panel,                                    # data
+  exogenous = ilo_exogenous_variables,                  # exogenous variables
+  stationary = c(FALSE, FALSE, FALSE, TRUE),            # stationarity (determines prior mean)
+  type = c("real", "rate", "rate", "rate")              # variable types
 )
 
-burn = estimate(spec, S = 10000, show_progress = FALSE) # estimate the model
+burn = estimate(spec, S = 10000, show_progress = FALSE) # run the burn-in
 post = estimate(burn, S = 10000)                        # estimate the model
 
 ```
@@ -345,11 +404,11 @@ post = estimate(burn, S = 10000)                        # estimate the model
 #| cache: true
 #| warning: false
 
-fore = forecast(
-  post,
-  horizon = 6,
-  exogenous_forecast = ilo_exogenous_forecasts,
-  conditional_forecast = ilo_conditional_forecasts
+fore = forecast(                                     # forecast the model 
+  post,                                              # estimation output
+  horizon = 6,                                       # forecast horizon
+  exogenous_forecast = ilo_exogenous_forecasts,      # forecasts for exogenous variables
+  conditional_forecast = ilo_conditional_forecasts   # gdp projections
 )
 ```
 
@@ -409,9 +468,9 @@ summary(fore, "COL")$variable2
 #| cache: true
 #| warning: false
 
-post |>
-  compute_variance_decompositions(horizon = 6) |>
-  plot(which_c = "COL")
+post |>                                              # estimation output
+  compute_variance_decompositions(horizon = 6) |>    # compute variance decompositions
+  plot(which_c = "COL")                              # plot variance decompositions
 ```
 
 ::: footer
@@ -420,23 +479,9 @@ post |>
 
 
 
-<!-- ## <span style="color: #1A003F;">roadmap</span> {background-color="#1614B1"} -->
-
-
-<!-- ## roadmap -->
-
-<!-- - go-to models for the analysis of policy effects -->
-
-<!-- ::: footer -->
-<!-- [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/) -->
-<!-- ::: -->
-
-
-
-
 
 
 ##  {background-color="#1614B1"}
 
-![](social_ilo.png){.absolute top=80 right=100 width="800"}
+![](social_ilo.png){.absolute top=80 right=50 width="900"}
 

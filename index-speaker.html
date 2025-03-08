@@ -395,34 +395,33 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="color: #1A003F;">by Tomasz Woźniak</span> 
+by Tomasz Woźniak 
 </div>
 </div>
 </div>
 
 </section>
-<section id="section" class="slide level2" data-background-color="#1614B1">
-<h2></h2>
+<section id="coming-up-next" class="slide level2" data-background-color="#1614B1">
+<h2>Coming up next</h2>
 <p><span class="math display">\[ \]</span></p>
 <h3 style="color:#1A003F;" id="modelling-and-forecasting-framework">modelling and forecasting framework</h3>
-<h3 style="color:#1A003F;" id="the-model">the model</h3>
 <h3 style="color:#1A003F;" id="the-r-package-bvarpanels">the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h3>
 <!-- ### roadmap {style="color:#1A003F;"} -->
 </section>
-<section id="section-1" class="slide level2" data-background-color="#1614B1">
-<h2></h2>
-
-<img data-src="bsvars.org.png" class="r-stretch quarto-figure-center"></section>
 <section id="materials" class="slide level2" data-background-color="#1614B1">
-<h2><span style="color: #1A003F;">Materials</span></h2>
+<h2>Materials</h2>
 <p><span class="math display">\[ \]</span></p>
 <h3 style="color:#1A003F;" id="lecture-slides-as-a-website">Lecture Slides <a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">as a Website</a></h3>
 <h3 style="color:#1A003F;" id="r-script-for-the-easy-results-reproduction"><a href="https://github.com/bsvars/2025-03-bvarPANELs-ilo/blob/master/bvarPANELs-ilo.R">R script</a> for the easy results reproduction</h3>
 <h3 style="color:#1A003F;" id="github-repo-to-reproduce-the-slides-and-results">GitHub <a href="https://github.com/bsvars/2025-03-bvarPANELs-ilo">repo</a> to reproduce the slides and results</h3>
 <h3 id="bvarpanels-package-repo"><a href="https://github.com/bsvars/bvarPANELs">bvarPANELs package repo</a></h3>
 </section>
+<section id="section" class="slide level2" data-background-color="#1614B1">
+<h2></h2>
+
+<img data-src="bsvars.org.png" class="r-stretch quarto-figure-center"></section>
 <section id="modelling-and-forecasting-framework-1" class="slide level2" data-background-color="#1614B1">
-<h2><span style="color: #1A003F;">modelling and forecasting framework</span></h2>
+<h2>modelling and forecasting framework</h2>
 </section>
 <section id="modelling-and-forecasting-framework-2" class="slide level2">
 <h2>modelling and forecasting framework</h2>
@@ -430,7 +429,7 @@
 <ul>
 <li>contemporary Bayesian modelling and institutional setup</li>
 <li>incorporates best knowledge and practices</li>
-<li>a ballance between model size, flexibility, and its capacity to extract signal from data</li>
+<li>a balance between model size, flexibility, and its capacity to extract signal from data</li>
 <li>highly computational, application-specific modelling</li>
 <li>inspirations: UN, IPCC, ECB, FED, Christopher Sims</li>
 </ul>
@@ -459,7 +458,7 @@
 <ul>
 <li>original non-stationary variables</li>
 <li>density forecasting</li>
-<li>conditional forecasting given gdp projections</li>
+<li>conditional forecasting given <span class="math inline">\(gdp\)</span> projections</li>
 <li>forecasting for models with exogenous variables</li>
 <li>restricted forecasting of rates</li>
 </ul>
@@ -467,7 +466,7 @@
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-model-1" class="slide level2">
+<section id="the-model" class="slide level2">
 <h2>the model</h2>
 <h3 style="color:#1A003F;" id="bayesian-hierarchical-panel-var">Bayesian hierarchical panel VAR</h3>
 <ul>
@@ -480,20 +479,23 @@
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-model-2" class="slide level2">
+<section id="the-model-1" class="slide level2">
 <h2>the model</h2>
 <h3 style="color:#1A003F;" id="country-specific-vector-autoregression">country-specific vector autoregression</h3>
 <p><span class="math display">\[\begin{align}
 &amp;\\
-        \mathbf{y}_{c.t} &amp;= \begin{bmatrix} gdp_{c.t} &amp; UR_{c.t} &amp; EPR_{c.t} &amp; LFPR_{c.t} \end{bmatrix}'\\[1ex]
+        \mathbf{y}_{c.t} &amp;= \begin{bmatrix} gdp_{c.t} &amp; UR_{c.t} &amp; EPR_{c.t} &amp; LFPR_{c.t} \end{bmatrix}'\\[3ex]
         \mathbf{y}_{c.t} &amp;= \mathbf{A}_{c.1} \mathbf{y}_{c.t-1} + \mathbf{A}_{d.c}\mathbf{x}_{c.t} + \boldsymbol\epsilon_{c.t}\\[1ex]
-        \boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} &amp; \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma_c\right)
+        \boldsymbol\epsilon_{c.t}\mid \mathbf{y}_{c.t-1} &amp; \sim N_4\left(\mathbf{0}_4, \boldsymbol\Sigma_c\right)\\[2ex]
 \end{align}\]</span></p>
+<ul>
+<li>subscript <span class="math inline">\(c\)</span> is for country, and <span class="math inline">\(t\)</span> is for time</li>
+</ul>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-model-3" class="slide level2">
+<section id="the-model-2" class="slide level2">
 <h2>the model</h2>
 <h3 style="color:#1A003F;" id="global-model-for-the-prior-mean">global model for the prior mean</h3>
 <p><span class="math display">\[\begin{align}
@@ -507,20 +509,7 @@
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-model-4" class="slide level2">
-<h2>the model</h2>
-<h3 style="color:#1A003F;" id="the-prior">the prior</h3>
-<p><span class="math display">\[\begin{align}
-&amp;\\
-\mathbf{A}_c, \boldsymbol\Sigma_c | \mathbf{A}, \mathbf{V}, \mathbf{\Sigma}, \nu &amp;\sim MNIW_{K\times N}\left(\mathbf{A}, \mathbf{V}, (N - \nu - 1)\mathbf{\Sigma}, \nu\right)\\[2ex]
-\mathbf{A}', \mathbf{V} \mid m, w, s &amp;\sim MNIW_{N\times K}\left(m\underline{\mathbf{M}}', w\underline{\mathbf{W}}, s\underline{\mathbf{S}}, \underline{\eta}\right)\label{eq:pgA}\\[2ex]
-\mathbf{\Sigma}\mid s &amp;\sim W_{N}\left(s\underline{\mathbf{S}}_\Sigma,\underline{\mu}_\Sigma\right)
-\end{align}\]</span></p>
-<div class="footer">
-<p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
-</div>
-</section>
-<section id="the-model-5" class="slide level2">
+<section id="the-model-3" class="slide level2">
 <h2>the model</h2>
 <h3 style="color:#1A003F;" id="flexible-3-level-hierarchical-prior-structure">flexible 3-level hierarchical prior structure</h3>
 <ul>
@@ -533,6 +522,41 @@
 <li>flexible modelling for various types of data</li>
 <li>improved forecasting performance</li>
 <li>robustness to different prior specifications</li>
+<li>convenient estimation using the Gibbs sampler</li>
+</ul>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
+</div>
+</section>
+<section id="the-model-4" class="slide level2">
+<h2>the model</h2>
+<h3 style="color:#1A003F;" id="the-local-global-prior">the local-global prior</h3>
+<p><span class="math display">\[\begin{align}
+&amp;\\
+\mathbf{A}_c, \boldsymbol\Sigma_c | \mathbf{A}, \mathbf{V}, \mathbf{\Sigma}, \nu &amp;\sim MNIW_{K\times N}\left(\mathbf{A}, \mathbf{V}, (N - \nu - 1)\mathbf{\Sigma}, \nu\right)\\[2ex]
+\mathbf{A}', \mathbf{V} \mid m, w, s &amp;\sim MNIW_{N\times K}\left(m\underline{\mathbf{M}}', w\underline{\mathbf{W}}, s\underline{\mathbf{S}}, \underline{\eta}\right)\label{eq:pgA}\\[2ex]
+\mathbf{\Sigma}\mid s &amp;\sim W_{N}\left(s\underline{\mathbf{S}}_\Sigma,\underline{\mu}_\Sigma\right)\\[3ex]
+\end{align}\]</span></p>
+<ul>
+<li><span class="math inline">\(MNIW\)</span> is the matrix normal-inverse Wishart distribution (see <a href="https://doi.org/10.1111/1467-8462.12179">Woźniak (2016)</a>)</li>
+<li><span class="math inline">\(W\)</span> is the Wishart distribution</li>
+</ul>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
+</div>
+</section>
+<section id="the-model-5" class="slide level2">
+<h2>the model</h2>
+<h3 style="color:#1A003F;" id="hierarchical-prior">hierarchical prior</h3>
+<p><span class="math display">\[\begin{align}
+&amp;\\
+\nu &amp;\sim\exp\left(\underline\lambda\right)\\[1ex]
+m &amp;\sim N\left(\underline{\mu}_m, \underline{\sigma}_m^2\right)\\[1ex]
+w &amp;\sim G\left(\underline{s}_w, \underline{a}_w\right)\\[1ex]
+s &amp;\sim IG2\left(\underline{s}_s, \underline{\nu}_s\right)\\[3ex]
+\end{align}\]</span></p>
+<ul>
+<li><span class="math inline">\(IG2\)</span> is the inverted gamma 2 distribution</li>
 </ul>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
@@ -543,8 +567,12 @@
 <h3 style="color:#1A003F;" id="one-period-ahead-predictive-density">one-period-ahead predictive density</h3>
 <p><span class="math display">\[\begin{align}
 &amp;\\
-        {\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} &amp; = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)
+        {\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)} &amp; = N_4\left(\mathbf{A}_{c.1} \mathbf{y}_{c.t} + \mathbf{A}_{d.c}\mathbf{x}_{c.t+1}, \boldsymbol\Sigma_c\right)\\[5ex]
 \end{align}\]</span></p>
+<ul>
+<li>is implied by the model</li>
+<li>is the same as frequentist predictive density</li>
+</ul>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
@@ -553,7 +581,6 @@
 <h2>forecasting</h2>
 <h3 style="color:#1A003F;" id="predictive-density">predictive density</h3>
 <p><span class="math display">\[\begin{align}
-&amp;\\
         p\left(\mathbf{y}_{c.t+h},\dots,\mathbf{y}_{c.t+1}\mid \mathbf{Y}_{c.t}\right)
         &amp;= \int p\left(\mathbf{y}_{c.t+h},\dots,\mathbf{y}_{c.t+1},\mathbf{A}_{c},\boldsymbol\Sigma_c\mid \mathbf{Y}_{c.t}\right)d\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\right)\\[1ex]
         &amp;= \int{\color{lig} p\left(\mathbf{y}_{c.t+h}\mid \mathbf{y}_{c.t+h-1},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)}\\[1ex]
@@ -561,12 +588,15 @@
         &amp;\qquad\times {\color{lig}p\left(\mathbf{y}_{c.t+1}\mid \mathbf{y}_{c.t},\mathbf{A}_{c},\boldsymbol\Sigma_c\right)}\\[1ex]
         &amp;\qquad\times p\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\mid \mathbf{Y}_{c.t}\right)d\left(\mathbf{A}_{c},\boldsymbol\Sigma_c\right)
 \end{align}\]</span></p>
+<ul>
+<li>conditional density structure determines the sampling algorithm</li>
+</ul>
 <div class="footer">
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
 <section id="the-r-package-bvarpanels-1" class="slide level2" data-background-color="#1614B1">
-<h2><span style="color: #1A003F;">the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></span></h2>
+<h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
 </section>
 <section id="the-r-package-bvarpanels-2" class="slide level2">
 <h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
@@ -604,19 +634,69 @@
 </section>
 <section id="the-r-package-bvarpanels-5" class="slide level2">
 <h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
+<h3 style="color:#1A003F;" id="load-data">load data</h3>
+<div class="cell" data-hash="index_cache/revealjs/data_59ca3ffe8d8c537f3d881190d847f9bc">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(bvarPANELs)             <span class="co"># load the package</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">data</span>(ilo_dynamic_panel)         <span class="co"># load the data</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>ilo_dynamic_panel<span class="sc">$</span>COL           <span class="co"># show the data for Colombia</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time Series:
+Start = 1991 
+End = 2023 
+Frequency = 1 
+          gdp        UR      EPR     LFPR
+1991 25.53464 10.120000 59.96793 66.71999
+1992 25.57429  9.440000 60.61868 66.93758
+1993 25.62675  7.800000 62.04586 67.29486
+1994 25.68326  8.250000 62.11328 67.69840
+1995 25.73398  8.720000 62.11020 68.04361
+1996 25.75433 11.810000 60.03138 68.07051
+1997 25.78805 12.139999 59.96012 68.24507
+1998 25.79374 15.000000 57.90753 68.12650
+1999 25.75079 20.059999 53.95368 67.49272
+2000 25.77962 20.520000 53.75205 67.62965
+2001 25.79626 15.040001 57.46694 67.64000
+2002 25.82099 14.481000 56.95565 66.60000
+2003 25.85942 13.220999 58.52376 67.44000
+2004 25.91138 13.717001 57.54213 66.69000
+2005 25.95854 11.061999 58.11209 65.34000
+2006 26.02355 11.091076 57.45149 64.61836
+2007 26.08876 11.204000 56.73176 63.89000
+2008 26.12106 11.273000 56.92724 64.16000
+2009 26.13240 12.066000 58.87181 66.95000
+2010 26.17636 11.153000 59.59857 67.08000
+2011 26.24353 10.288000 60.56457 67.51000
+2012 26.28191  9.959000 61.29091 68.07000
+2013 26.33198  9.246000 61.05022 67.27000
+2014 26.37599  8.799000 61.09555 66.99000
+2015 26.40512  8.572000 61.27505 67.02000
+2016 26.42578  8.922000 60.49401 66.42000
+2017 26.43928  9.086000 60.01233 66.01000
+2018 26.46460  9.360000 59.13354 65.24000
+2019 26.49597 10.280000 57.70790 64.32000
+2020 26.42140 15.983000 53.28358 63.42000
+2021 26.52396 13.897999 55.38942 64.33000
+2022 26.59432 10.547000 56.49851 63.16000
+2023 26.60042  9.565347 57.65713 63.75558</code></pre>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
+</div>
+</section>
+<section id="the-r-package-bvarpanels-6" class="slide level2">
+<h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
 <h3 style="color:#1A003F;" id="specify-and-estimate-the-model">specify and estimate the model</h3>
-<div class="cell" data-hash="index_cache/revealjs/spec_6db421ff4a396d7f99ba4eda077891dd">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(bvarPANELs) <span class="co"># load the package</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>spec <span class="ot">=</span> specify_bvarPANEL<span class="sc">$</span><span class="fu">new</span>( <span class="co"># specify the model</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>  ilo_dynamic_panel,</span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="at">exogenous =</span> ilo_exogenous_variables,</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="at">stationary =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"real"</span>, <span class="st">"rate"</span>, <span class="st">"rate"</span>, <span class="st">"rate"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a>burn <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">10000</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>) <span class="co"># estimate the model</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>post <span class="ot">=</span> <span class="fu">estimate</span>(burn, <span class="at">S =</span> <span class="dv">10000</span>)                        <span class="co"># estimate the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/spec_f706070f1741f422ad188c8ea6a84f45">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>spec <span class="ot">=</span> specify_bvarPANEL<span class="sc">$</span><span class="fu">new</span>(                           <span class="co"># specify the model</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  ilo_dynamic_panel,                                    <span class="co"># data</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">exogenous =</span> ilo_exogenous_variables,                  <span class="co"># exogenous variables</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="at">stationary =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),            <span class="co"># stationarity (determines prior mean)</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"real"</span>, <span class="st">"rate"</span>, <span class="st">"rate"</span>, <span class="st">"rate"</span>)              <span class="co"># variable types</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>burn <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">10000</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>) <span class="co"># run the burn-in</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>post <span class="ot">=</span> <span class="fu">estimate</span>(burn, <span class="at">S =</span> <span class="dv">10000</span>)                        <span class="co"># estimate the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
 bvarPANELs: Forecasting with Bayesian Hierarchical|
@@ -632,16 +712,16 @@ bvarPANELs: Forecasting with Bayesian Hierarchical|
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-r-package-bvarpanels-6" class="slide level2">
+<section id="the-r-package-bvarpanels-7" class="slide level2">
 <h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
 <h3 style="color:#1A003F;" id="forecast-labour-market-outcomes">forecast labour market outcomes</h3>
-<div class="cell" data-hash="index_cache/revealjs/for_bf2c82268fbbf0b86f2e0021b6b9489c">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>fore <span class="ot">=</span> <span class="fu">forecast</span>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  post,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">horizon =</span> <span class="dv">6</span>,</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="at">exogenous_forecast =</span> ilo_exogenous_forecasts,</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="at">conditional_forecast =</span> ilo_conditional_forecasts</span>
-<span id="cb4-6"><a href="#cb4-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/for_73d1d1b189a7d4e6ffad9311a50355fc">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>fore <span class="ot">=</span> <span class="fu">forecast</span>(                                     <span class="co"># forecast the model </span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  post,                                              <span class="co"># estimation output</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">horizon =</span> <span class="dv">6</span>,                                       <span class="co"># forecast horizon</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="at">exogenous_forecast =</span> ilo_exogenous_forecasts,      <span class="co"># forecasts for exogenous variables</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="at">conditional_forecast =</span> ilo_conditional_forecasts   <span class="co"># gdp projections</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
 bvarPANELs: Forecasting with Bayesian Hierarchical|
@@ -657,22 +737,22 @@ bvarPANELs: Forecasting with Bayesian Hierarchical|
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-r-package-bvarpanels-7" class="slide level2">
+<section id="the-r-package-bvarpanels-8" class="slide level2">
 <h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
 <h3 style="color:#1A003F;" id="forecast-labour-market-outcomes-1">forecast labour market outcomes</h3>
 <div class="cell" data-hash="index_cache/revealjs/fore_plot_ad50257bcbbf8eecca393949849a69dd">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">plot</span>(fore, <span class="st">"COL"</span>, <span class="at">main =</span> <span class="st">"Forecasts for Colombia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(fore, <span class="st">"COL"</span>, <span class="at">main =</span> <span class="st">"Forecasts for Colombia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="index_files/figure-revealjs/fore_plot-1.png" width="960" class="r-stretch"><div class="footer">
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-r-package-bvarpanels-8" class="slide level2">
+<section id="the-r-package-bvarpanels-9" class="slide level2">
 <h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
 <h3 style="color:#1A003F;" id="forecast-labour-market-outcomes-2">forecast labour market outcomes</h3>
 <div class="cell" data-hash="index_cache/revealjs/fore_summary_65ce9a74c48cb5a9edd3ae0bbf76442b">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">summary</span>(fore, <span class="st">"COL"</span>)<span class="sc">$</span>variable2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">summary</span>(fore, <span class="st">"COL"</span>)<span class="sc">$</span>variable2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> **************************************************|
  bsvars: Bayesian Structural Vector Autoregressions|
@@ -694,28 +774,22 @@ bvarPANELs: Forecasting with Bayesian Hierarchical|
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
 </section>
-<section id="the-r-package-bvarpanels-9" class="slide level2">
+<section id="the-r-package-bvarpanels-10" class="slide level2">
 <h2>the R package <a href="https://github.com/bsvars/bvarPANELs">bvarPANELs</a></h2>
 <h3 style="color:#1A003F;" id="forecast-error-variance-decomposition">forecast error variance decomposition</h3>
-<div class="cell" data-hash="index_cache/revealjs/fevd_d8c61f2fa181baa82ec789d7f8347224">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>post <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">plot</span>(<span class="at">which_c =</span> <span class="st">"COL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/fevd_cf822ba2d57f63b51bdc22db63f53f29">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>post <span class="sc">|&gt;</span>                                              <span class="co"># estimation output</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span>    <span class="co"># compute variance decompositions</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">plot</span>(<span class="at">which_c =</span> <span class="st">"COL"</span>)                              <span class="co"># plot variance decompositions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="index_files/figure-revealjs/fevd-1.png" width="960" class="r-stretch"><div class="footer">
 <p><a href="https://bsvars.org/2025-03-bvarPANELs-ilo/">Forecasting with Bayesian Panel VARs</a></p>
 </div>
-<!-- ## <span style="color: #1A003F;">roadmap</span> {background-color="#1614B1"} -->
-<!-- ## roadmap -->
-<!-- - go-to models for the analysis of policy effects -->
-<!-- ::: footer -->
-<!-- [Forecasting with Bayesian Panel VARs](https://bsvars.org/2025-03-bvarPANELs-ilo/) -->
-<!-- ::: -->
 </section>
-<section id="section-2" class="slide level2" data-background-color="#1614B1">
+<section id="section-1" class="slide level2" data-background-color="#1614B1">
 <h2></h2>
-<p><img data-src="social_ilo.png" class="absolute" style="top: 80px; right: 100px; width: 800px; "></p>
+<p><img data-src="social_ilo.png" class="absolute" style="top: 80px; right: 50px; width: 900px; "></p>
 <div class="footer footer-default">
 
 </div>
