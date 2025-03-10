@@ -16,6 +16,15 @@ execute:
   echo: true
 ---
 
+
+
+##  {background-color="#1614B1"}
+
+[![](bvarPANELs.png)](https://bsvars.org/){.absolute top=30 right=275 width="500"}
+
+
+
+
 ## Coming up next  {background-color="#1614B1"}
 
 $$ $$
@@ -32,7 +41,7 @@ $$ $$
 
 $$ $$
 
-### Lecture Slides [as a Website](https://bsvars.org/2025-03-bvarPANELs-ilo/) {style="color:#1A003F;"}
+### Lecture Slides [as a website](https://bsvars.org/2025-03-bvarPANELs-ilo/) {style="color:#1A003F;"}
 
 ### [R script](https://github.com/bsvars/2025-03-bvarPANELs-ilo/blob/master/bvarPANELs-ilo.R) for the easy results reproduction {style="color:#1A003F;"}
 
@@ -40,13 +49,9 @@ $$ $$
 
 ### [bvarPANELs package repo](https://github.com/bsvars/bvarPANELs)
 
+### [bvarPANELs](https://github.com/bsvars/bvarPANELs) package [website](https://bsvars.org/bvarPANELs/) {style="color:#1A003F;"} 
 
 
-
-
-##  {background-color="#1614B1"}
-
-[![](bsvars.org.png)](https://bsvars.org/){.absolute top=30 right=275 width="500"}
 
 
 
